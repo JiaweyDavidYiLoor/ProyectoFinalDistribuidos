@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubapp
+  labels:
+    app: kubapp
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: kubapp
+  template:
+    metadata:
+      labels:
+        app: kubapp
+    spec:
+      containers:
+      - name: kubapp
+        image: serrodcal/kubapp
+        imagePullPolicy: IfNotPresent 
+        ports:
+        - containerPort: 5000
